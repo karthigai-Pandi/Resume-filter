@@ -66,3 +66,63 @@ npm run dev
 
 - This demo uses text-based resume matching for a fast local prototype.
 - You can extend the backend to add PDF or DOCX parsing and AI ranking later.
+
+## Deploy
+
+This project has two deployable parts:
+
+- `backend/` is the Node.js Express API.
+- `frontend/` is the React/Vite static site.
+
+### 1. Push the project to GitHub
+
+Commit your code and push it to a GitHub repository. Most hosting platforms can deploy directly from GitHub.
+
+### 2. Deploy the backend
+
+Use a Node hosting service such as Render, Railway, or any VPS.
+
+Recommended settings:
+
+```text
+Root directory: backend
+Build command: npm install
+Start command: npm start
+Environment variable: PORT is provided by the host
+```
+
+After deployment, test:
+
+```text
+https://your-backend-url/api/health
+```
+
+It should return:
+
+```json
+{ "status": "ok", "version": "1.0.0" }
+```
+
+### 3. Deploy the frontend
+
+Use a static hosting service such as Vercel, Netlify, or Cloudflare Pages.
+
+Recommended settings:
+
+```text
+Root directory: frontend
+Build command: npm run build
+Output directory: dist
+```
+
+Add this environment variable in the frontend host:
+
+```text
+VITE_API_BASE_URL=https://your-backend-url
+```
+
+Do not include `/api/filter` in the value. The app adds the API path itself.
+
+### 4. Redeploy frontend after setting the API URL
+
+Vite reads `VITE_API_BASE_URL` during build, so redeploy the frontend after adding or changing that variable.
