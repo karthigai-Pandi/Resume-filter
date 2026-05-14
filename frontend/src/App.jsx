@@ -4,7 +4,7 @@ import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
-const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001').replace(/\/$/, '');
+const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
 
 const defaultJobDescription = `We are hiring a Software Engineer with 4+ years of experience building REST APIs, microservices, backend systems, and cloud infrastructure. The candidate must know Node.js, Express, TypeScript, SQL, AWS, and automation testing. Strong communication and teamwork skills are required.`;
 
