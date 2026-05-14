@@ -4,8 +4,6 @@ import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
-const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
-
 const defaultJobDescription = `We are hiring a Software Engineer with 4+ years of experience building REST APIs, microservices, backend systems, and cloud infrastructure. The candidate must know Node.js, Express, TypeScript, SQL, AWS, and automation testing. Strong communication and teamwork skills are required.`;
 
 async function extractPdfText(file) {
@@ -59,7 +57,7 @@ function App() {
     setError('');
 
     try {
-      const response = await fetch(`${apiBaseUrl}/api/filter`, {
+      const response = await fetch('/api/filter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ jobDescription, resumes: candidates }),
