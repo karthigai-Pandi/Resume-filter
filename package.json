@@ -7,7 +7,7 @@
     "start-backend": "npm start --prefix backend",
     "start-frontend": "npm run dev --prefix frontend",
     "start": "npx concurrently \"npm run start-backend\" \"npm run start-frontend\"",
-    "prebuild": "cd frontend && npm ci",
+    "prebuild": "cd frontend && npm install",
     "build-frontend": "cd frontend && npm run build",
     "build": "npm run build-frontend"
   }
